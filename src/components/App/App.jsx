@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-// import PropTypes from 'prop-types'
 import image from 'images/feedback.jpeg';
 import Statistics from 'components/Statistics/Statistics';
 import FeedbackOptions from 'components/FeedbackOptions/FeedbackOptions';
 import Section from 'components/Section/Section';
+import Notification from 'components/Notification/Notification';
+import styles from 'components/App/App.module.css';
 
 export class App extends Component {
   state = {
@@ -33,8 +34,8 @@ export class App extends Component {
   render() {
     const { good, neutral, bad } = this.state;
     return (
-      <div>
-        <h1 className="title">Please leave your feedback</h1>
+      <div className={styles.container}>
+        <h1 className={styles.title}>Please leave your feedback</h1>
         <img src={image} alt="Feedback" />
 
         <FeedbackOptions
@@ -55,7 +56,7 @@ export class App extends Component {
               percentage={this.countPositiveFeedbackPercentage()} //результат вызова
             />
           ) : (
-            'There is no feedback'
+            <Notification message="There is no feedback" />
           )}
         </Section>
       </div>
