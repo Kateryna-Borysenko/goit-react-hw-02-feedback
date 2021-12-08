@@ -5,7 +5,7 @@ const FeedbackOptions = ({ categories, onClickBtn }) => (
     {categories.map(category => (
       <button
         key={category} //без уникал ключа даёт ошибку
-        className={styles.controlBtn}
+        className={styles.btn}
         type="button"
         onClick={() => onClickBtn(category)} //aнанимная ф-ция которая сработает при клике
       >

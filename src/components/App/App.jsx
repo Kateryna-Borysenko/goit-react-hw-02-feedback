@@ -35,8 +35,8 @@ export class App extends Component {
     const { good, neutral, bad } = this.state;
     return (
       <div className={styles.container}>
-        <h1 className={styles.title}>Please leave your feedback</h1>
-        <img src={image} alt="Feedback" />
+        <h1 className={styles.title}>Please Leave Your</h1>
+        <img className={styles.image} src={image} alt="Feedback" />
 
         <FeedbackOptions
           categories={['good', 'neutral', 'bad']}
