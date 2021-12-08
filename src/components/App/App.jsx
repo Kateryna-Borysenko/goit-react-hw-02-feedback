@@ -15,10 +15,18 @@ export class App extends Component {
     this.setState({ [category]: this.state[category] + 1 });
   };
 
-  coutnTotal = () => {
+  countTotalFeedback = () => {
     const { good, neutral, bad } = this.state;
     //получаю данные состояния
     return good + neutral + bad;
+  };
+
+  countPositiveFeedbackPercentage = () => {
+    const total = this.countTotalFeedback();
+    const good = this.state.good; //
+    //Math.ceil()-> округление до большего целого
+    //eсли total -> есть то считаем, если ничего не выбрано значение 0
+    return total ? Math.ceil((good / total) * 100) : 0;
   };
 
   render() {
@@ -41,7 +49,8 @@ export class App extends Component {
           good={good}
           neutral={neutral}
           bad={bad}
-          total={this.coutnTotal()} //результат вызова
+          total={this.countTotalFeedback()} //результат вызова
+          percentage={this.countPositiveFeedbackPercentage()} //результат вызова
         />
       </div>
     );

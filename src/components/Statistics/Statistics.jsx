@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import styles from './Statistics.module.css';
 
-const Statistics = ({ good, neutral, bad, total = 0, percentage }) => {
+const Statistics = ({ good, neutral, bad, total, percentage }) => {
   return (
     <div className={styles.statistics}>
       <p className={styles.feedback}>
@@ -16,9 +16,9 @@ const Statistics = ({ good, neutral, bad, total = 0, percentage }) => {
       <p className={styles.total}>
         Total: <span className={styles.feedbackValue}>{total}</span>
       </p>
-      <p className="positiveFeedback">
-        Positive feedback:{'ok'}
-        <span className={styles.feedbackValuePercentage}>{percentage}%</span>
+      <p className={styles.positiveFeedback}>
+        Positive feedback:{' '}
+        <span className={styles.feedbackValuePercentage}>{percentage} %</span>
       </p>
     </div>
   );
@@ -29,7 +29,7 @@ Statistics.propTypes = {
   neutral: PropTypes.number.isRequired,
   bad: PropTypes.number.isRequired,
   total: PropTypes.number.isRequired,
-  // percentage: PropTypes.number.isRequired,
+  percentage: PropTypes.number.isRequired,
 };
 
 export default Statistics;
