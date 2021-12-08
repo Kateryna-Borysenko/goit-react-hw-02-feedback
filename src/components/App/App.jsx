@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 // import PropTypes from 'prop-types'
 import image from 'images/feedback.jpeg';
+import Statistics from 'components/Statistics/Statistics';
+import FeedbackOptions from 'components/FeedbackOptions/FeedbackOptions';
 
 export class App extends Component {
   state = {
@@ -8,8 +10,13 @@ export class App extends Component {
     neutral: 0,
     bad: 0,
   };
+  // eсли нужно изменить state делаем это через метод setState()
+  onClickBtn = category => {
+    this.setState({ [category]: this.state[category] + 1 });
+  };
 
   render() {
+    const { good, neutral, bad } = this.state;
     return (
       <div>
         {/* Section start */}
@@ -17,41 +24,47 @@ export class App extends Component {
         <img src={image} alt="Feedback" />
         {/* Section end */}
 
+        <FeedbackOptions
+          categories={['good', 'neutral', 'bad']}
+          onClickBtn={this.onClickBtn}
+        />
+
         {/* Counter start */}
-        <div className="counterControls">
-          <button className="counterControlsBtn" type="button">
+        {/* <div className="counterControls">
+          <button
+            className="counterControlsBtn"
+            type="button"
+            onClick={this.onClickBtn}
+          >
             Good
           </button>
-          <button className="counterControlsBtn" type="button">
+          <button
+            className="counterControlsBtn"
+            type="button"
+            onClick={this.onClickBtn}
+          >
             Neutral
           </button>
-          <button className="counterControlsBtn" type="button">
+          <button
+            className="counterControlsBtn"
+            type="button"
+            onClick={this.onClickBtn}
+          >
             Bad
           </button>
-        </div>
+        </div> */}
         {/* Counter end */}
 
         {/* Statistics start */}
         <h2 className="title">Statistics</h2>
 
-        {/* Statistics start */}
-        <div className="statistics">
-          <p className="goodFeedback">
-            Good: <span>?</span>
-          </p>
-          <p className="goodFeedback">
-            Neutral: <span>?</span>
-          </p>
-          <p className="goodFeedback">
-            Bad: <span>?</span>
-          </p>
+        {/* диструктуризация */}
+        <Statistics good={good} neutral={neutral} bad={bad} />
 
-          <p className="positiveFeedback">
-            Positive feedback: <span>? %</span>
-          </p>
-        </div>
-        {/* Statistics end */}
-        {/* Statistics end */}
+        <p className="positiveFeedback">
+          Positive feedback:{' '}
+          <span className="feedbackValuePercentage">? %</span>
+        </p>
       </div>
     );
   }
