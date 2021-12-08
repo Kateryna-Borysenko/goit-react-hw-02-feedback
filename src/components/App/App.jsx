@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 // import PropTypes from 'prop-types'
+import image from 'images/feedback.jpeg';
 
 export class App extends Component {
   state = {
@@ -13,6 +14,7 @@ export class App extends Component {
       <div>
         {/* Section start */}
         <h1 className="title">Please leave your feedback</h1>
+        <img src={image} alt="Feedback" />
         {/* Section end */}
 
         {/* Counter start */}
