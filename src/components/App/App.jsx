@@ -15,6 +15,12 @@ export class App extends Component {
     this.setState({ [category]: this.state[category] + 1 });
   };
 
+  coutnTotal = () => {
+    const { good, neutral, bad } = this.state;
+    //получаю данные состояния
+    return good + neutral + bad;
+  };
+
   render() {
     const { good, neutral, bad } = this.state;
     return (
@@ -26,45 +32,17 @@ export class App extends Component {
 
         <FeedbackOptions
           categories={['good', 'neutral', 'bad']}
-          onClickBtn={this.onClickBtn}
+          onClickBtn={this.onClickBtn} //cсылка на ф-цию
         />
-
-        {/* Counter start */}
-        {/* <div className="counterControls">
-          <button
-            className="counterControlsBtn"
-            type="button"
-            onClick={this.onClickBtn}
-          >
-            Good
-          </button>
-          <button
-            className="counterControlsBtn"
-            type="button"
-            onClick={this.onClickBtn}
-          >
-            Neutral
-          </button>
-          <button
-            className="counterControlsBtn"
-            type="button"
-            onClick={this.onClickBtn}
-          >
-            Bad
-          </button>
-        </div> */}
-        {/* Counter end */}
-
-        {/* Statistics start */}
         <h2 className="title">Statistics</h2>
 
-        {/* диструктуризация */}
-        <Statistics good={good} neutral={neutral} bad={bad} />
-
-        <p className="positiveFeedback">
-          Positive feedback:{' '}
-          <span className="feedbackValuePercentage">? %</span>
-        </p>
+        {/* диструктуризация строка 19*/}
+        <Statistics
+          good={good}
+          neutral={neutral}
+          bad={bad}
+          total={this.coutnTotal()} //результат вызова
+        />
       </div>
     );
   }
