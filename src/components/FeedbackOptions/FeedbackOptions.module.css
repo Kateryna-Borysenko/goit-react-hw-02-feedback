@@ -1,12 +1,17 @@
 .wrap {
-  margin: 40px 0;
   display: flex;
   justify-content: space-evenly;
+  margin: 0 auto;
+}
+@media screen and (min-width: 700px) {
+  .wrap {
+    width: 500px;
+  }
 }
 .btn {
   font-size: 16px;
   border-radius: 3px;
-  width: 120px;
+  width: 110px;
   padding: 10px 0;
   font-family: inherit;
   font-weight: 600;
@@ -22,4 +27,5 @@
 .btn:focus {
   transform: scale(1.1);
   cursor: pointer;
+  transition: all 200ms;
 }

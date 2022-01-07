@@ -5,6 +5,7 @@ import FeedbackOptions from 'components/FeedbackOptions/FeedbackOptions';
 import Section from 'components/Section/Section';
 import Notification from 'components/Notification/Notification';
 import styles from 'components/App/App.module.css';
+import Container from './Container/Container';
 
 export class App extends Component {
   state = {
@@ -34,10 +35,9 @@ export class App extends Component {
   render() {
     const { good, neutral, bad } = this.state;
     return (
-      <div className={styles.container}>
+      <Container>
         <h1 className={styles.title}>Please Leave Your</h1>
         <img className={styles.image} src={image} alt="Feedback" />
-
         <FeedbackOptions
           categories={['good', 'neutral', 'bad']}
           onClickBtn={this.onClickBtn} //cсылка на ф-цию
@@ -59,7 +59,7 @@ export class App extends Component {
             <Notification message="There is no feedback" />
           )}
         </Section>
-      </div>
+      </Container>
     );
   }
 }
