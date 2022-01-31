@@ -4,13 +4,13 @@ const Section = ({ title, children }) => {
   return (
     <div>
       <h2>{title}</h2>
-      {/* title - по умолчанию */}
       {children}
     </div>
   );
 };
 
 Section.propTypes = {
-  title: PropTypes.string, //может прийти, а может и нет;
+  title: PropTypes.string,
+  children: PropTypes.node.isRequired,
 };
 export default Section;
